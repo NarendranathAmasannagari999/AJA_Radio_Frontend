@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from './RadioLandingPage.module.css';
-import { FaPlay, FaPause, FaRandom, FaUsers, FaMicrophone, FaNewspaper, FaGlobe, FaMapMarkerAlt, FaFutbol, FaSmile, FaRegCalendarAlt } from 'react-icons/fa';
+import { FaPlay, FaPause, FaRandom, FaUsers, FaMicrophone, FaNewspaper, FaGlobe, FaMapMarkerAlt, FaFutbol, FaSmile, FaRegCalendarAlt, FaBars, FaTimes } from 'react-icons/fa';
 import { GiSoundWaves, GiMicrophone, GiRadioTower } from 'react-icons/gi';
 import { motion } from 'framer-motion';
 
@@ -10,6 +10,7 @@ const RadioLandingPage = () => {
   const [groups, setGroups] = useState([]);
   const [schedule, setSchedule] = useState([]);
   const [activeTab, setActiveTab] = useState('live');
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // Generate mock data
   useEffect(() => {
@@ -74,7 +75,6 @@ const RadioLandingPage = () => {
   };
 
   const generateRandomTeam = () => {
-    // In a real app, this would call your backend API
     alert("Generating new random team for next show! This would call your API in production.");
   };
 
@@ -90,8 +90,79 @@ const RadioLandingPage = () => {
     }
   };
 
+  const scrollToSection = (sectionId) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsMenuOpen(false);
+  };
+
   return (
     <div className={styles.container}>
+      {/* Navbar */}
+      <nav className={styles.navbar}>
+        <div className={styles.navbarContainer}>
+          <div className={styles.navbarLogo}>
+            <GiRadioTower className={styles.logoIcon} />
+            <span>AJA Radio</span>
+          </div>
+          
+          {/* Desktop Navigation */}
+          <div className={styles.navLinks}>
+            <button onClick={() => { setActiveTab('live'); scrollToSection('live-section'); }}>
+              Live
+            </button>
+            <button onClick={() => { setActiveTab('schedule'); scrollToSection('live-section'); }}>
+              Schedule
+            </button>
+            <button onClick={() => { setActiveTab('teams'); scrollToSection('live-section'); }}>
+              Teams
+            </button>
+            <button onClick={() => scrollToSection('how-it-works')}>
+              How It Works
+            </button>
+            <button onClick={() => scrollToSection('cta-section')}>
+              Join Us
+            </button>
+          </div>
+          
+          {/* Mobile Menu Button */}
+          <button 
+            className={styles.menuButton}
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? <FaTimes /> : <FaBars />}
+          </button>
+        </div>
+        
+        {/* Mobile Navigation */}
+        {isMenuOpen && (
+          <motion.div 
+            className={styles.mobileNavLinks}
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+          >
+            <button onClick={() => { setActiveTab('live'); scrollToSection('live-section'); setIsMenuOpen(false); }}>
+              Live
+            </button>
+            <button onClick={() => { setActiveTab('schedule'); scrollToSection('live-section'); setIsMenuOpen(false); }}>
+              Schedule
+            </button>
+            <button onClick={() => { setActiveTab('teams'); scrollToSection('live-section'); setIsMenuOpen(false); }}>
+              Teams
+            </button>
+            <button onClick={() => { scrollToSection('how-it-works'); setIsMenuOpen(false); }}>
+              How It Works
+            </button>
+            <button onClick={() => { scrollToSection('cta-section'); setIsMenuOpen(false); }}>
+              Join Us
+            </button>
+          </motion.div>
+        )}
+      </nav>
+
       {/* Animated Header */}
       <header className={styles.header}>
         <motion.div 
@@ -118,7 +189,7 @@ const RadioLandingPage = () => {
       {/* Main Content */}
       <main className={styles.mainContent}>
         {/* Live Show Section */}
-        <section className={styles.liveSection}>
+        <section id="live-section" className={styles.liveSection}>
           <div className={styles.tabs}>
             <button 
               className={`${styles.tabButton} ${activeTab === 'live' ? styles.active : ''}`}
@@ -261,7 +332,7 @@ const RadioLandingPage = () => {
         </section>
 
         {/* How It Works Section */}
-        <section className={styles.howItWorks}>
+        <section id="how-it-works" className={styles.howItWorks}>
           <h2>How AJA Radio Works</h2>
           <div className={styles.stepsContainer}>
             <motion.div 
@@ -303,7 +374,7 @@ const RadioLandingPage = () => {
         </section>
 
         {/* Call to Action */}
-        <section className={styles.ctaSection}>
+        <section id="cta-section" className={styles.ctaSection}>
           <GiSoundWaves className={styles.ctaWave} />
           <h2>Ready to Join the Fun?</h2>
           <p>Be part of our office radio culture and showcase your hidden talents!</p>
@@ -322,10 +393,9 @@ const RadioLandingPage = () => {
             <span>AJA Radio</span>
           </div>
           <div className={styles.footerLinks}>
-            <a href="#about">About</a>
-            <a href="#teams">Teams</a>
-            <a href="#schedule">Schedule</a>
-            <a href="#contact">Contact</a>
+            <button onClick={() => scrollToSection('live-section')}>Live</button>
+            <button onClick={() => scrollToSection('how-it-works')}>How It Works</button>
+            <button onClick={() => scrollToSection('cta-section')}>Join Us</button>
           </div>
           <div className={styles.footerSocial}>
             <span>Follow Us:</span>
@@ -342,4 +412,4 @@ const RadioLandingPage = () => {
   );
 };
 
-export default RadioLandingPage; 
+export default RadioLandingPage;
