@@ -7,11 +7,101 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Navbar Styles */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #2c3e50;
+  color: white;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.navbarContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.navbarLogo {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.navbarLogo .logoIcon {
+  margin-right: 0.5rem;
+  font-size: 1.8rem;
+  color: #6a45ff;
+}
+
+.navLinks {
+  display: flex;
+  gap: 1rem;
+}
+
+.navLinks button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.navLinks button:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.menuButton {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.mobileNavLinks {
+  flex-direction: column;
+  background-color: #34495e;
+  padding: 1rem;
+  gap: 0.5rem;
+}
+
+.mobileNavLinks button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.mobileNavLinks button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
 /* Header Styles */
 .header {
   position: relative;
-  padding: 2rem 1rem;
+  padding: 3rem 1rem;
   text-align: center;
+  margin-top: 80px;
   overflow: hidden;
 }
 
@@ -20,11 +110,11 @@
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .logoIcon {
-  font-size: 3rem;
+  font-size: 3.5rem;
   color: #6a45ff;
 }
 
@@ -42,6 +132,7 @@
   margin: 0;
   font-size: 1.2rem;
   color: #a0a0c0;
+  font-weight: 400;
 }
 
 .headerWave {
@@ -53,7 +144,6 @@
   background: linear-gradient(90deg, #6a45ff, #ff4d8d, #6a45ff);
   background-size: 200% 100%;
   animation: waveAnimation 3s linear infinite;
-  transform-origin: left;
 }
 
 @keyframes waveAnimation {
@@ -68,34 +158,37 @@
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
-  padding: 1rem;
+  padding: 1.5rem;
 }
 
 /* Live Show Section */
 .liveSection {
   background: rgba(255, 255, 255, 0.05);
   border-radius: 15px;
-  padding: 2rem;
-  margin-bottom: 3rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 .tabs {
   display: flex;
+  gap: 0.5rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   margin-bottom: 1.5rem;
+  overflow-x: auto;
+  white-space: nowrap;
 }
 
 .tabButton {
   background: none;
   border: none;
   color: #a0a0c0;
-  padding: 0.8rem 1.5rem;
+  padding: 0.8rem 1.2rem;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
   position: relative;
-  transition: all 0.3s ease;
+  transition: color 0.3s ease;
 }
 
 .tabButton:hover {
@@ -120,7 +213,7 @@
 .liveShow {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .showHeader {
@@ -132,12 +225,14 @@
 .showHeader h2 {
   margin: 0;
   font-size: 1.8rem;
+  font-weight: 600;
 }
 
 .audioControls {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .playButton {
@@ -153,6 +248,7 @@
   border-radius: 50px;
   cursor: pointer;
   transition: all 0.3s ease;
+  min-height: 44px;
 }
 
 .playButton:hover {
@@ -177,18 +273,19 @@
 
 .nextSegment {
   color: #a0a0c0;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
 }
 
 .showTeam h3 {
   margin-bottom: 1rem;
   color: #a0a0c0;
   font-size: 1.2rem;
+  font-weight: 500;
 }
 
 .teamGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 1rem;
 }
 
@@ -206,7 +303,7 @@
 }
 
 .teamMember.rj {
-  border-left: 3px solid #6a45ff;
+  border-left: 4px solid #6a45ff;
   background: rgba(106, 69, 255, 0.05);
 }
 
@@ -221,16 +318,18 @@
 
 .roleIcon {
   color: #6a45ff;
+  font-size: 1.2rem;
 }
 
 .memberInfo h4 {
   margin: 0;
   font-size: 1.1rem;
+  font-weight: 500;
 }
 
 .memberInfo p {
   margin: 0;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: #a0a0c0;
 }
 
@@ -244,11 +343,12 @@
 .scheduleContainer h2 {
   margin: 0;
   font-size: 1.8rem;
+  font-weight: 600;
 }
 
 .scheduleGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 1rem;
 }
 
@@ -262,12 +362,14 @@
 
 .scheduleItem:hover {
   background: rgba(255, 255, 255, 0.07);
+  transform: translateY(-2px);
 }
 
 .scheduleDay {
   font-weight: 600;
   color: #6a45ff;
   margin-bottom: 0.5rem;
+  font-size: 1rem;
 }
 
 .scheduleTime {
@@ -283,7 +385,7 @@
 }
 
 .scheduleTeam {
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: #a0a0c0;
 }
 
@@ -298,11 +400,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .teamsHeader h2 {
   margin: 0;
   font-size: 1.8rem;
+  font-weight: 600;
 }
 
 .generateButton {
@@ -318,6 +423,7 @@
   border-radius: 50px;
   cursor: pointer;
   transition: all 0.3s ease;
+  min-height: 44px;
 }
 
 .generateButton:hover {
@@ -327,7 +433,7 @@
 
 .teamsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 1.5rem;
 }
 
@@ -347,6 +453,7 @@
 .teamCard h3 {
   margin: 0 0 1rem 0;
   color: #6a45ff;
+  font-size: 1.2rem;
 }
 
 .teamMembers {
@@ -361,19 +468,20 @@
   padding: 0.3rem 0.6rem;
   border-radius: 50px;
   font-size: 0.8rem;
+  color: #ffffff;
 }
 
 .nextShow {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: #a0a0c0;
 }
 
 /* How It Works Section */
 .howItWorks {
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 
 .howItWorks h2 {
@@ -384,18 +492,19 @@
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  font-weight: 700;
 }
 
 .stepsContainer {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
 }
 
 .step {
   background: rgba(255, 255, 255, 0.03);
-  border-radius: 15px;
-  padding: 2rem;
+  border-radius: 12px;
+  padding: 1.5rem;
   border: 1px solid rgba(255, 255, 255, 0.05);
   transition: all 0.3s ease;
   position: relative;
@@ -407,22 +516,22 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 3px;
+  width: 4px;
   height: 100%;
   background: linear-gradient(to bottom, #6a45ff, #ff4d8d);
 }
 
 .step:hover {
   background: rgba(255, 255, 255, 0.07);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
 
 .stepNumber {
   position: absolute;
   top: 1rem;
   right: 1rem;
-  width: 30px;
-  height: 30px;
+  width: 28px;
+  height: 28px;
   background: rgba(106, 69, 255, 0.1);
   color: #6a45ff;
   border-radius: 50%;
@@ -430,18 +539,20 @@
   align-items: center;
   justify-content: center;
   font-weight: bold;
+  font-size: 0.9rem;
 }
 
 .step h3 {
-  margin: 0 0 1rem 0;
+  margin: 0 0 0.8rem 0;
   font-size: 1.2rem;
+  font-weight: 600;
 }
 
 .step p {
   margin: 0;
   color: #a0a0c0;
   font-size: 0.9rem;
-  line-height: 1.6;
+  line-height: 1.5;
 }
 
 /* CTA Section */
@@ -449,8 +560,8 @@
   position: relative;
   background: linear-gradient(135deg, #1a0a2e 0%, #0a0a1a 100%);
   border-radius: 15px;
-  padding: 3rem 2rem;
-  margin-bottom: 3rem;
+  padding: 2.5rem 1.5rem;
+  margin-bottom: 2rem;
   text-align: center;
   overflow: hidden;
 }
@@ -474,14 +585,16 @@
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  font-weight: 700;
 }
 
 .ctaSection p {
   position: relative;
   z-index: 1;
   max-width: 600px;
-  margin: 0 auto 2rem auto;
+  margin: 0 auto 1.5rem auto;
   color: #a0a0c0;
+  font-size: 1rem;
 }
 
 .ctaButtons {
@@ -490,6 +603,7 @@
   display: flex;
   gap: 1rem;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .primaryButton {
@@ -502,6 +616,7 @@
   border-radius: 50px;
   cursor: pointer;
   transition: all 0.3s ease;
+  min-height: 44px;
 }
 
 .primaryButton:hover {
@@ -519,6 +634,7 @@
   border-radius: 50px;
   cursor: pointer;
   transition: all 0.3s ease;
+  min-height: 44px;
 }
 
 .secondaryButton:hover {
@@ -529,7 +645,7 @@
 /* Footer Styles */
 .footer {
   background: rgba(0, 0, 0, 0.3);
-  padding: 3rem 1rem 1rem;
+  padding: 2rem 1.5rem 1rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -537,9 +653,9 @@
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  margin-bottom: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .footerLogo {
@@ -561,13 +677,17 @@
   gap: 0.8rem;
 }
 
-.footerLinks a {
+.footerLinks button {
+  background: none;
+  border: none;
   color: #a0a0c0;
-  text-decoration: none;
-  transition: all 0.3s ease;
+  font-size: 1rem;
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.3s ease;
 }
 
-.footerLinks a:hover {
+.footerLinks button:hover {
   color: #6a45ff;
 }
 
@@ -579,6 +699,7 @@
 
 .footerSocial span {
   color: #a0a0c0;
+  font-size: 1rem;
 }
 
 .socialIcons {
@@ -588,57 +709,80 @@
 
 .footerBottom {
   text-align: center;
-  padding-top: 2rem;
+  padding-top: 1.5rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: #a0a0c0;
 }
 
 /* Responsive Styles */
+@media (max-width: 1024px) {
+  .teamGrid, .scheduleGrid, .teamsGrid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+
+  .stepsContainer {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
 @media (max-width: 768px) {
   .header {
-    padding: 1.5rem 1rem;
+    padding: 2rem 1rem;
   }
-  
+
   .logoText {
     font-size: 2rem;
   }
-  
+
   .tagline {
     font-size: 1rem;
   }
-  
+
+  .navLinks {
+    display: none;
+  }
+
+  .menuButton {
+    display: block;
+  }
+
+  .mobileNavLinks {
+    display: flex;
+  }
+
   .liveSection {
-    padding: 1.5rem;
+    padding: 1.2rem;
   }
-  
+
   .tabs {
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    padding-bottom: 0.5rem;
   }
-  
+
   .tabButton {
     padding: 0.6rem 1rem;
     font-size: 0.9rem;
   }
-  
+
   .audioControls {
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
   }
-  
-  .howItWorks h2, .ctaSection h2 {
-    font-size: 1.8rem;
+
+  .showHeader h2, .scheduleContainer h2, .teamsHeader h2, .howItWorks h2, .ctaSection h2 {
+    font-size: 1.6rem;
   }
-  
+
   .ctaButtons {
     flex-direction: column;
     align-items: center;
   }
-  
-  .primaryButton, .secondaryButton {
+
+  .primaryButton, .secondaryButton, .generateButton {
     width: 100%;
-    max-width: 300px;
+    max-width: 280px;
   }
 }
 
@@ -646,113 +790,44 @@
   .logoContainer {
     flex-direction: column;
     text-align: center;
+    gap: 0.5rem;
   }
-  
-  .teamGrid, .scheduleGrid, .teamsGrid {
+
+  .logoIcon {
+    font-size: 2.5rem;
+  }
+
+  .logoText {
+    font-size: 1.8rem;
+  }
+
+  .teamGrid, .scheduleGrid, .teamsGrid, .stepsContainer {
     grid-template-columns: 1fr;
   }
-  
-  .stepsContainer {
+
+  .showHeader h2, .scheduleContainer h2, .teamsHeader h2, .howItWorks h2, .ctaSection h2 {
+    font-size: 1.4rem;
+  }
+
+  .playButton, .generateButton, .primaryButton, .secondaryButton {
+    font-size: 0.9rem;
+    padding: 0.7rem 1.2rem;
+  }
+
+  .navbarContainer {
+    padding: 0.8rem 1rem;
+  }
+
+  .footerContent {
     grid-template-columns: 1fr;
+    text-align: center;
   }
-} 
 
-/* Navbar Styles */
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background-color: #2c3e50;
-  color: white;
-  z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.navbarContainer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.navbarLogo {
-  display: flex;
-  align-items: center;
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-.navbarLogo .logoIcon {
-  margin-right: 0.5rem;
-  font-size: 1.8rem;
-}
-
-.navLinks {
-  display: flex;
-  gap: 1.5rem;
-}
-
-.navLinks button {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 1rem;
-  cursor: pointer;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  transition: all 0.3s ease;
-}
-
-.navLinks button:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.menuButton {
-  display: none;
-  background: none;
-  border: none;
-  color: white;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-.mobileNavLinks {
-  display: none;
-  flex-direction: column;
-  background-color: #34495e;
-  padding: 1rem;
-  gap: 1rem;
-}
-
-.mobileNavLinks button {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 1rem;
-  cursor: pointer;
-  padding: 0.5rem;
-  text-align: left;
-}
-
-/* Responsive Styles */
-@media (max-width: 768px) {
-  .navLinks {
-    display: none;
+  .footerLogo {
+    justify-content: center;
   }
-  
-  .menuButton {
-    display: block;
-  }
-  
-  .mobileNavLinks {
-    display: flex;
-  }
-}
 
-/* Adjust header margin to account for fixed navbar */
-.header {
-  margin-top: 80px;
+  .footerLinks {
+    align-items: center;
+  }
 }
